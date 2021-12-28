@@ -9,7 +9,7 @@ configuration:
     port: 3600
 ```
 
-Using Configr, the values could be accessed as such:
+Using Configr, the values could be accessed in this way:
 ```python
 cr = Configr("config.yaml")
 cr["configuration.mysql.host"]
@@ -29,6 +29,7 @@ It is also possible to set an initial root key, to minimize verbosity when using
 ```yaml
 this:
   is:
+    nothingInteresting: Jimmy With A Law Degree Is Like A Chimp With A Machine Gun.
     really:
       fantastically:
         deep: Is it not?

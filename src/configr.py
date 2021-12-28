@@ -7,17 +7,10 @@ import xmltodict
 import yaml
 
 
-def _get_parts_(root_key: str, key: str, separator: Optional[str] = ".") -> List[str]:
-    if root_key is None and key is not None:
-        return key.split(separator)
-    if root_key is not None and key is None:
-        return root_key.split(separator)
-    if root_key is None and key is None:
-        return []
-
-    root_parts: List[str] = root_key.split(separator)
-    key_parts: List[str] = key.split(separator)
-    return root_parts + key_parts
+def _get_parts_(key: str, separator: Optional[str] = ".") -> List[str]:
+    if key is None or not isinstance(key, str):
+        raise ValueError("Invalid key!")
+    return key.split(separator)
 
 
 class Configr:
@@ -38,13 +31,15 @@ class Configr:
                 self.__config__ = xmltodict.parse(file.read())
         self.path = path
         self.__separator__ = separator
-        self.__root_key__ = root_key
+        if root_key:
+            self.__config__ = self.__getitem__(root_key)
+            self.__root_key__ = root_key
 
     def __getitem__(self, key: str) -> Any:
         if not isinstance(key, str):
             raise ValueError("Key must be of type string.")
 
-        parts: List[str] = _get_parts_(self.__root_key__, key, self.__separator__)
+        parts: List[str] = _get_parts_(key, self.__separator__)
         current: dict = self.__config__
         for part in parts:
             if part not in current:
@@ -56,10 +51,14 @@ class Configr:
         if not isinstance(key, str):
             raise ValueError("Key must be of type string.")
 
-        parts: List[str] = _get_parts_(self.__root_key__, key, self.__separator__)
+        parts: List[str] = _get_parts_(key, self.__separator__)
         current: dict = self.__config__
         for part in parts:
             if part not in current:
                 return False
             current = current[part]
         return True
+
+if __name__ == "__main__":
+    cl = Configr("/home/t/PycharmProjects/thumos-configr/test.yaml", root_key="this.is.really")
+    print(cl["absolutely.annoying"])
