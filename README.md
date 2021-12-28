@@ -17,7 +17,7 @@ cr["configuration.mysql.host"]
 cr["configuration.mysql.port"]
 >> 3600
 ```
-You may ask why one would want to use this instead of simply using a dictionary. The first answer is; why not? Perhaps it's more convenient, more appealing to the eyes, or perhaps you're even coming from something like Spring Boot where this is the way it's usually done.
+You may ask why one would want to use this instead of simply using a dictionary. The answer is; why not? Perhaps it's more convenient, more appealing to the eyes, or perhaps you're even coming from something like Spring Boot where this is the way it's usually done.
 
 However, other characters than the dot can be used as a separator.
 ```python
