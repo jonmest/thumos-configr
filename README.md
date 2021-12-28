@@ -11,6 +11,7 @@ configuration:
 
 Using Configr, the values could be accessed in this way:
 ```python
+from configr import Configr
 cr = Configr("config.yaml")
 cr["configuration.mysql.host"]
 >> localhost
@@ -43,4 +44,12 @@ cr["fantastically.deep"]
 >> Is it not?
 cr["absolutely.annoying"]
 >> Indeed
+```
+## Installation
+```bash
+pip install thumos-configr
+```
+Import like this:
+```python
+from configr import Configr
 ```
