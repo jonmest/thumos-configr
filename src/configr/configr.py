@@ -58,7 +58,3 @@ class Configr:
                 return False
             current = current[part]
         return True
-
-if __name__ == "__main__":
-    cl = Configr("/home/t/PycharmProjects/thumos-configr/test.yaml", root_key="this.is.really")
-    print(cl["absolutely.annoying"])
