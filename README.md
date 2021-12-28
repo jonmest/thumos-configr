@@ -14,7 +14,7 @@ Using Configr, the values could be accessed in this way:
 cr = Configr("config.yaml")
 cr["configuration.mysql.host"]
 >> localhost
-cr["configuration.port"]
+cr["configuration.mysql.port"]
 >> 3600
 ```
 
